@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "produto")
@@ -29,13 +28,6 @@ public class Produto {
     @Column(nullable = false)
     private Integer estoque;
 
-    @ManyToMany(mappedBy = "produtos")
-    private List<Pedido> pedidos;
-
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
     public Integer getEstoque() {
         return estoque;
     }
@@ -54,10 +46,6 @@ public class Produto {
 
     public Long getId() {
         return id;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
     }
 
     public void setEstoque(Integer estoque) {

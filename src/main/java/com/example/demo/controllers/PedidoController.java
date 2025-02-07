@@ -26,6 +26,5 @@ public class PedidoController {
 
     @PostMapping
     public Pedido criarPedido(@RequestBody Pedido pedido) {
-        return pedidoService.salvar(pedido);
-    }
+        return pedidoService.salvar(pedido);}
 }

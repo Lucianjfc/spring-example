@@ -21,22 +21,22 @@ public class Pedido {
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
+    @ManyToOne
+    @JoinColumn(name = "produto_id", nullable = false)
+    private Produto produto;
+
     @Column(name = "data_pedido")
     private LocalDateTime dataPedido = LocalDateTime.now();
 
     @Column(nullable = false)
     private String status = "PENDENTE";
 
-    @ManyToMany
-    @JoinTable(
-            name = "pedido_produto",
-            joinColumns = @JoinColumn(name = "pedido_id"),
-            inverseJoinColumns = @JoinColumn(name = "produto_id")
-    )
-    private List<Produto> produtos;
+    public Produto getProduto() {
+        return produto;
+    }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     public String getStatus() {
@@ -53,10 +53,6 @@ public class Pedido {
 
     public Long getId() {
         return id;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
     }
 
     public void setStatus(String status) {
